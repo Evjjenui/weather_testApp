@@ -1,0 +1,83 @@
+body {
+  padding: 25px;
+}
+
+.forecast {
+  position: relative;
+  display: flex;
+
+  &-form {
+    button {
+      height: 40px;
+      font-size: 15px;
+      line-height: 40px;
+      background-color: #001c68;
+      border: none;
+      color: #fff;
+      padding: 0 25px;
+      border-radius: 5px;
+      margin-left: 20px;
+      cursor: pointer;
+    }
+
+    input {
+      width: 240px;
+      height: 40px;
+      font-size: 16px;
+      line-height: 40px;
+      padding: 0 10px;
+      border-radius: 5px;
+      border: 1px solid #000;
+    }
+
+    .error {
+      position: absolute;
+      left: 0;
+      bottom: -18px;
+      font-size: 12px;
+      line-height: 14px;
+      color: #a11f1f;
+    }
+  }
+
+  .loading {
+    position: absolute;
+    left: 0;
+    top: -40px;
+  }
+}
+
+.city-weather {
+  margin-left: auto;
+
+  sup {
+    padding-left: 2px;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+}
+
+.recently-viewed {
+  margin-top: 40px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(#001c68, 0.4);
+
+  &__list {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+
+    span {
+      display: inline-block;
+      vertical-align: top;
+      cursor: pointer;
+      text-decoration: underline;
+      margin-right: 15px;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

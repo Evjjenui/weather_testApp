@@ -5,22 +5,22 @@ import { useDispatch, useSelector } from "react-redux";
 
 export const SearchList = () => {
   const historyList = useSelector(state => state.history.list)
-  const dispatch = 
+  const dispatch = useDispatch()
   
-  console.log(historyList);
   return (
-    <div className='recently-viewved'>
-      <p><strong>Recently viewved:</strong></p>
-
-      {(historyList.length > 0 ) && historyList.map( (item) => {
-        return (
-          <span
-            key={ item.id }
-            onClick={() => dispatch(weatherFetch(item.cityName))}>
-            { item.cityName }
-          </span>
-        )
-      })}
+    <div className='recently-viewed'>
+      <p><strong>Recently viewed:</strong></p>
+      <div className="recently-viewed__list">
+        {(historyList.length > 0 ) && historyList.map( (item) => {
+          return (
+            <span
+              key={ item.id }
+              onClick={() => dispatch(weatherFetch(item.cityName))}>
+              { item.cityName }
+            </span>
+          )
+        })}
+      </div>
     </div>  
   )
 }

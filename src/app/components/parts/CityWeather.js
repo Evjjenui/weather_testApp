@@ -2,14 +2,8 @@ import React from "react";
 
 export const CityWeather = ({ cityName, temperature }) => {
   return (
-    <div className="weather-info">
-      <h1> { cityName } </h1>
-      {/* <h1> { Math.round(data.weatherData.main.temp) } </h1> */}
-      <h1>
-        { Math.round(temperature) } 
-        <sup>o</sup>
-        C
-        </h1>
+    <div className="city-weather">
+      <strong> { cityName }: { Math.round(temperature - 273) }<sup>o</sup>C</strong>
     </div>
   )
 }
