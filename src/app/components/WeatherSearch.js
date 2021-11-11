@@ -18,17 +18,13 @@ const WeatherSearch = () => {
 
     const newItem = {
       cityName: cityName,
-      date: new Date().toISOString().slice(0, 10),
+      date: new Date(Date.now()).toString(),
       id: Date.now()
     }
 
     dispatch(weatherFetch(cityName))
     dispatch(searchList(newItem))
-
-    
-    console.log(weatherData);
   }
-  console.log('AFTER FETCH: ', weatherData);
 
   return (
     <div className="forecast">

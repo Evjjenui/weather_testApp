@@ -11,15 +11,21 @@ export const SearchList = () => {
     <div className='recently-viewed'>
       <p><strong>Recently viewed:</strong></p>
       <div className="recently-viewed__list">
-        {(historyList.length > 0 ) && historyList.map( (item) => {
-          return (
-            <span
-              key={ item.id }
-              onClick={() => dispatch(weatherFetch(item.cityName))}>
-              { item.cityName }
-            </span>
-          )
-        })}
+        <ol>
+          {(historyList.length > 0 ) && historyList.slice(0, 10).map( (item) => {
+            return (
+              <li>
+                <span
+                  key={ item.id }
+                  onClick={() => dispatch(weatherFetch(item.cityName))}>
+                  { item.cityName }
+                  <br/>
+                  <i>{ item.date }</i>
+                </span>
+              </li>
+            )
+          })}
+        </ol>
       </div>
     </div>  
   )

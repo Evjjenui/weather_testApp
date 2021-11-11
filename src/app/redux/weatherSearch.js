@@ -33,7 +33,7 @@ export const { isLoading, dataRecieved, errorRecieved } = weatherForecast.action
 export const weatherFetch = (city) => async(dispatch) => {
   dispatch(isLoading(city))
   try {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city || 'Kyiv'}&appid=056ec8951afa830cd6dd286d3b4d8725`)
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city || 'Kyiv'}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
     const data = await response.json()
     dispatch(dataRecieved(data))
   } catch (error) {
