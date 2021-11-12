@@ -15,12 +15,7 @@ const WeatherSearch = () => {
     e.preventDefault()
     const cityName = e.target[0].value
 
-    const newItem = {
-      city: cityName,
-      date: Date.now()
-    }
-
-    dispatch(weatherFetch(cityName, newItem))
+    dispatch(weatherFetch(cityName, cityName))
   }
 
   return (
@@ -39,8 +34,8 @@ const WeatherSearch = () => {
       </div>
       
       { weatherData && <CityWeather 
-        cityName = { weatherData.name }
-        temperature = { weatherData.main.temp }
+        cityName = { weatherData.city.name }
+        temperature = { weatherData.list[0].main.feels_like }
       />}
     </div>
   )

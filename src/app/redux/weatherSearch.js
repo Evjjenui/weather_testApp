@@ -12,35 +12,30 @@ export const weatherForecast = createSlice({
 
   reducers: {
     isLoading(state, action) {
-      if (state.loading === 'idle') {
-        state.loading = 'pending'
-        state.city = action.payload
-      }
+      state.loading = 'pending'
+      state.city = action.payload
     },
     dataRecieved(state, action) {
-      if (state.loading === 'pending') {
-        state.weatherData = action.payload
-        state.loading = 'idle'
-      }
+      state.weatherData = action.payload
+      state.loading = 'idle'
+      state.errorMessage = null
     },
     errorRecieved(state, action) {
       state.errorMessage = action.payload
+      state.loading = 'idle'
     }
   }
 })
 
 export const { isLoading, dataRecieved, errorRecieved } = weatherForecast.actions
 
-export const weatherFetch = (city, newItem) => async(dispatch) => {
+export const weatherFetch = (city) => async(dispatch) => {
   dispatch(isLoading(city))
-  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
   if (response.ok) {
     const data = await response.json()
     dispatch(dataRecieved(data))
-    dispatch(errorRecieved(null));
-    if (newItem) {
-      dispatch(searchList(newItem))
-    }
+    dispatch(searchList(city))
   } else {
     dispatch(errorRecieved('Error: Wrong City Name'));
   }

@@ -5,6 +5,6 @@ import historyReducer from "./redux/searchHistory";
 export default configureStore({
   reducer: {
     forecast: weatherReducer,
-    history: historyReducer
+    history: historyReducer,
   },
 })
