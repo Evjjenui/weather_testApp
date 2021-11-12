@@ -5,29 +5,36 @@ body {
 .forecast {
   position: relative;
   display: flex;
+  align-items: center;
 
   &-form {
+    form {
+      display: flex;
+    }
+
     button {
-      height: 40px;
-      font-size: 15px;
-      line-height: 40px;
-      background-color: #001c68;
+      font-size: 16px;
+      line-height: 24px;
+      background-color: #0b71d9;
       border: none;
       color: #fff;
-      padding: 0 25px;
-      border-radius: 5px;
-      margin-left: 20px;
+      padding: 8px 30px;
+      border-radius: 0 4px 4px 0;
+      margin-left: -1px;
       cursor: pointer;
     }
 
     input {
       width: 240px;
       height: 40px;
-      font-size: 16px;
-      line-height: 40px;
-      padding: 0 10px;
-      border-radius: 5px;
-      border: 1px solid #000;
+      padding: 8px 10px;
+      border-radius: 4px 0 0 4px;
+      border: 1px solid #b8bfc6;
+      transition: ease border-color 0.3s;
+
+      &:focus {
+        border-color: #0a64bf;
+      }
     }
 
     .error {
@@ -51,6 +58,11 @@ body {
 .city-weather {
   margin-left: auto;
 
+  strong {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
   sup {
     padding-left: 2px;
     font-size: 14px;
@@ -61,8 +73,13 @@ body {
 .recently-viewed {
   margin-top: 40px;
   padding: 20px;
-  border-radius: 10px;
-  background-color: rgba(#001c68, 0.4);
+  border-radius: 5px;
+  background-color: #eff2f6;
+
+  p {
+    color: #0b0d0e;
+    font-weight: 500;
+  }
 
   &__list {
     margin-top: 15px;
@@ -72,9 +89,26 @@ body {
     span {
       display: inline-block;
       vertical-align: top;
-      cursor: pointer;
-      text-decoration: underline;
+      min-width: 100px;
+      padding: 5px 10px;
+      border-radius: 8px;
       margin-right: 15px;
+      background-color: #fff;
+      box-shadow: 0 0 2px rgba(5, 20, 41, 0.06), 0 2px 3px rgba(5, 20, 41, 0.08);
+      transition: ease box-shadow 0.3s;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 0 3px rgba(5, 20, 41, 0.16),
+          0 3px 4px rgba(5, 20, 41, 0.18);
+      }
+
+      i {
+        float: right;
+        font-size: 12px;
+        color: #7f8b99;
+        font-style: normal;
+      }
 
       &:hover {
         text-decoration: none;

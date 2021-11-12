@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import  { searchList } from "../redux/searchHistory"
 
 export const weatherForecast = createSlice({
   name: 'forecast',
@@ -30,14 +31,18 @@ export const weatherForecast = createSlice({
 
 export const { isLoading, dataRecieved, errorRecieved } = weatherForecast.actions
 
-export const weatherFetch = (city) => async(dispatch) => {
+export const weatherFetch = (city, newItem) => async(dispatch) => {
   dispatch(isLoading(city))
-  try {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city || 'Kyiv'}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
+  if (response.ok) {
     const data = await response.json()
     dispatch(dataRecieved(data))
-  } catch (error) {
-    dispatch(errorRecieved(error))
+    dispatch(errorRecieved(null));
+    if (newItem) {
+      dispatch(searchList(newItem))
+    }
+  } else {
+    dispatch(errorRecieved('Error: Wrong City Name'));
   }
 }
 

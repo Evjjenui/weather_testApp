@@ -9,23 +9,19 @@ export const SearchList = () => {
   
   return (
     <div className='recently-viewed'>
-      <p><strong>Recently viewed:</strong></p>
+      <p>Recently viewed:</p>
       <div className="recently-viewed__list">
-        <ol>
-          {(historyList.length > 0 ) && historyList.slice(0, 10).map( (item) => {
-            return (
-              <li>
-                <span
-                  key={ item.id }
-                  onClick={() => dispatch(weatherFetch(item.cityName))}>
-                  { item.cityName }
-                  <br/>
-                  <i>{ item.date }</i>
-                </span>
-              </li>
-            )
-          })}
-        </ol>
+        {(historyList.length > 0 ) && historyList.slice(0, 10).map( (item) => {
+          return (
+            <span
+              key={ item.date }
+              onClick={() => dispatch(weatherFetch(item.city))}>
+              { item.city }
+              <br/>
+              <i>{ new Date(item.date).toString().split(' ')[4] }</i>
+            </span>
+          )
+        })}
       </div>
     </div>  
   )

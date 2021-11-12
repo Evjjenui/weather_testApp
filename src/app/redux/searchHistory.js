@@ -8,7 +8,7 @@ export const searchHistory = createSlice({
   },
   reducers: {
     searchList: (state, action) => {
-      state.list = [...state.list, action.payload].sort((a, b) => {return b.id - a.id})
+      state.list = [...state.list, action.payload].sort((a, b) => {return b.date - a.date})
     },
   }
 })

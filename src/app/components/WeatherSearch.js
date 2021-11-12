@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import  { weatherFetch } from "../redux/weatherSearch"
-import  { searchList } from "../redux/searchHistory"
 import { useDispatch, useSelector } from "react-redux";
 import { CityWeather } from "./parts/CityWeather";
 
@@ -17,13 +16,11 @@ const WeatherSearch = () => {
     const cityName = e.target[0].value
 
     const newItem = {
-      cityName: cityName,
-      date: new Date(Date.now()).toString(),
-      id: Date.now()
+      city: cityName,
+      date: Date.now()
     }
 
-    dispatch(weatherFetch(cityName))
-    dispatch(searchList(newItem))
+    dispatch(weatherFetch(cityName, newItem))
   }
 
   return (
@@ -37,15 +34,12 @@ const WeatherSearch = () => {
             />
           <button>Search</button>
 
-
-          {/* {  (Object.keys(weatherData).length === 0) && <p>Empty data</p> } */}
-
-          { error && <p className='error'>Error: { error.message }</p> }
+          { error && <p className='error'>{ error }</p> }
         </form>
       </div>
       
       { weatherData && <CityWeather 
-        cityName = { city }
+        cityName = { weatherData.name }
         temperature = { weatherData.main.temp }
       />}
     </div>
