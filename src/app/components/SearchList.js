@@ -1,10 +1,10 @@
 import React from "react";
 import { weatherFetch } from "../redux/weatherSearch";
 import { useDispatch, useSelector } from "react-redux";
-import { selectSortList } from "../redux/selector/listSelector";
+import { selectSliceList } from "../redux/selector/listSelector";
 
 const SearchList = () => {
-  const historyList = useSelector(selectSortList);
+  const historyList = useSelector(selectSliceList);
   const dispatch = useDispatch();
 
   return (
@@ -12,7 +12,7 @@ const SearchList = () => {
       <p>Recently viewed:</p>
       <div className="recently-viewed__list">
         {historyList.length > 0 &&
-          historyList.slice(0, 10).map((item) => {
+          historyList.map((item) => {
             return (
               <span
                 key={item.date}
