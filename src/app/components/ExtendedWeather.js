@@ -11,7 +11,8 @@ const ExtendedWeather = () => {
     return (
       <div className='extended-forecast'>
         {extendedData.map(item => {
-          const date = new Date(item.dt * 1000).toString().split(' ')[0]
+          const date = new Date(item.dt * 1000)
+          const fullDateName = new Intl.DateTimeFormat('en-US', {dateStyle: 'full'}).format(date).split(',')[0]
           const temperature = Math.round(item.main.temp - 273)
           const humidity = item.main.humidity
   
@@ -19,7 +20,7 @@ const ExtendedWeather = () => {
             <div
               className='extended-forecast__item'
               key={item.dt}>
-              <p className="date">{date}</p>
+              <p className="date">{fullDateName}</p>
               <p className="temperature">
                 { temperature } <sup>o</sup>C
               </p>
