@@ -1,22 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const searchHistory = createSlice({
-  name: 'history',
+  name: "history",
   initialState: {
-    initialCity: '',
-    list: []
+    list: [],
   },
   reducers: {
     searchList: (state, action) => {
       const newItem = {
         city: action.payload,
-        date: Date.now()
-      }
-      state.list = [...state.list, newItem].sort((a, b) => {return b.date - a.date})
+        date: Date.now(),
+      };
+      state.list = [...state.list, newItem];
     },
-  }
-})
+  },
+});
 
-export const { searchList } = searchHistory.actions
+export const { searchList } = searchHistory.actions;
 
-export default searchHistory.reducer
+export default searchHistory.reducer;
