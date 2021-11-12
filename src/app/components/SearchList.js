@@ -1,9 +1,9 @@
 import React from "react";
-import  { weatherFetch } from "../../redux/weatherSearch"
+import  { weatherFetch } from "../redux/weatherSearch"
 import { useDispatch, useSelector } from "react-redux";
 
 
-export const SearchList = () => {
+const SearchList = () => {
   const historyList = useSelector(state => state.history.list)
   const dispatch = useDispatch()
   
@@ -26,3 +26,4 @@ export const SearchList = () => {
     </div>  
   )
 }
+export default SearchList;

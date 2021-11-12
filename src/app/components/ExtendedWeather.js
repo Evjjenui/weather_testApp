@@ -5,15 +5,16 @@ const ExtendedWeather = () => {
   const { weatherData } = useSelector(state => state.forecast)
   
   if (weatherData) {
-    const extendedData = weatherData.list.filter((value, index, array) => {return index % 8 === 0})
     
+    const extendedData = weatherData.list.filter((value, index, array) => {return index % 8 === 0})
+      
     return (
       <div className='extended-forecast'>
         {extendedData.map(item => {
           const date = new Date(item.dt * 1000).toString().split(' ')[0]
           const temperature = Math.round(item.main.temp - 273)
           const humidity = item.main.humidity
-
+  
           return (
             <div
               className='extended-forecast__item'

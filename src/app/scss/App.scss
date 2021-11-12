@@ -10,8 +10,18 @@ body {
   align-items: center;
 
   &-form {
-    form {
+    .form-item {
       display: flex;
+      position: relative;
+
+      svg {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        left: 8px;
+        top: 10px;
+        fill: #b8bfc6;
+      }
     }
 
     button {
@@ -24,12 +34,17 @@ body {
       border-radius: 0 4px 4px 0;
       margin-left: -1px;
       cursor: pointer;
+      transition: ease background-color 0.25s;
+
+      &:hover {
+        background-color: #0a64bf;
+      }
     }
 
     input {
       width: 240px;
       height: 40px;
-      padding: 8px 10px;
+      padding: 8px 10px 8px 35px;
       border-radius: 4px 0 0 4px;
       border: 1px solid #b8bfc6;
       transition: ease border-color 0.3s;
