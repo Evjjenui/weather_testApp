@@ -167,7 +167,7 @@ body {
 // Extended forecast BLOCK
 
 // Media
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
   body {
     padding: 15px;
   }
@@ -192,5 +192,9 @@ body {
     .city-weather {
       width: 100%;
     }
+  }
+
+  .extended-forecast__item .date {
+    font-size: 16px;
   }
 }
